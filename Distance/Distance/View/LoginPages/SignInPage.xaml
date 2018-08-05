@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Distance.View.LoginPages.SignInPage"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:behavior="clr-namespace:Distance.Behavior"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="baseStyle"
+             TargetType="Label">
+                <Setter Property="XAlign" Value="Start" />
+                <Setter Property="YAlign" Value="Center" />
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="FontAttributes" Value="Italic" />
+            </Style>
+            <behavior:BooleanToObjectConverter x:Key="boolToStyleEmail"
+                                           x:TypeArguments="Style">
+                <behavior:BooleanToObjectConverter.FalseObject>
+                    <Style TargetType="Label" BasedOn="{StaticResource baseStyle}">
+                        <Setter Property="TextColor" Value="#F44336" />
+                        <Setter Property="Text" Value="الرجاء ادخال ايميل صحيح" />
+                    </Style>
+                </behavior:BooleanToObjectConverter.FalseObject>
+
+                <behavior:BooleanToObjectConverter.TrueObject>
+                    <Style TargetType="Label" BasedOn="{StaticResource baseStyle}">
+                        <Setter Property="TextColor" Value="#4CAF50" />
+                        <Setter Property="Text" Value="الايميل صحيح" />
+                    </Style>
+                </behavior:BooleanToObjectConverter.TrueObject>
+            </behavior:BooleanToObjectConverter>
+            <behavior:BooleanToObjectConverter x:Key="boolToStylePassword"
+                                           x:TypeArguments="Style">
+                <behavior:BooleanToObjectConverter.FalseObject>
+                    <Style TargetType="Label" BasedOn="{StaticResource baseStyle}">
+                        <Setter Property="TextColor" Value="#F44336" />
+                        <Setter Property="Text" Value="كلمة السر تتضمن حرف ورقم و محرف خاص اكثر من 6 رموز" />
+                    </Style>
+                </behavior:BooleanToObjectConverter.FalseObject>
+
+                <behavior:BooleanToObjectConverter.TrueObject>
+                    <Style TargetType="Label" BasedOn="{StaticResource baseStyle}">
+                        <Setter Property="TextColor" Value="#4CAF50" />
+                        <Setter Property="Text" Value="كلمة السر صحيح" />
+                    </Style>
+                </behavior:BooleanToObjectConverter.TrueObject>
+            </behavior:BooleanToObjectConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid
+			Padding="20"
+			 RowSpacing="30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <BoxView
+                Grid.Row="0"/>
+            <Image
+                 Grid.Row="1"
+				HorizontalOptions="Center"
+				Source="Brax.png" />
+            <Frame
+                 Grid.Row="2"
+				BackgroundColor="#BF043055"
+				HasShadow="false"
+                 CornerRadius="15">
+                <StackLayout
+					Orientation="Vertical"
+					Spacing="10">
+                    <Label Text="البريد الالكتروني"
+                          HorizontalOptions="End" 
+                           TextColor="White"/>
+                    <Entry
+                              x:Name="emailEntry" 
+                              Placeholder="البريد الالكتروني .." 
+                              VerticalOptions="CenterAndExpand" 
+                             TextColor="White"
+                           PlaceholderColor="White"
+                              Keyboard="Email">
+                        <Entry.Behaviors>
+                            <behavior:EmailValidatorBehavior  x:Name="emailValidator"/>
+                        </Entry.Behaviors>
+                    </Entry>
+                    <Label  Style="{Binding Source={x:Reference emailValidator}, 
+                                Path=IsValid, 
+                                Converter={StaticResource boolToStyleEmail}}" />
+                    <Label Text="كلمة المرور"
+                          HorizontalOptions="End"
+                           TextColor="White"/>
+                    <Entry
+                              x:Name="passwordEntry" 
+                              Placeholder ="كلمة المرور .." 
+                              VerticalOptions="CenterAndExpand" 
+                             IsPassword="False" 
+                              PlaceholderColor="White">
+                        <Entry.Behaviors>
+                            <behavior:PasswordValidationBehavior x:Name="passwordValidator"/>
+                        </Entry.Behaviors>
+                    </Entry>
+                    <Label  Style="{Binding Source={x:Reference passwordValidator}, 
+                                Path=IsValid, 
+                                Converter={StaticResource boolToStylePassword}}" />
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="End">
+                        <Label Text="تذكر بيناتي"
+                               TextColor="White"/>
+                        <controls:CheckBox
+                           DefaultText=""
+                            x:Name="rememberMe"
+                             CheckedChanged="rememberMe_CheckedChanged"/>
+                    </StackLayout>
+                        
+                            
+                </StackLayout>
+            </Frame>
+            <Button
+                 Grid.Row="3"
+				x:Name="SigninButton"
+				Text="دخول"
+				TextColor="White"
+				FontAttributes="Bold"
+				FontSize="20"
+				HorizontalOptions="Center"
+				BackgroundColor="#BF043055"
+                Clicked="LoginButton_Clicked"
+                WidthRequest="130"/>
+            <Button 
+                HorizontalOptions="End"
+                Grid.Row="3"
+                Text="نسيت كلمة السر "
+                TextColor="White"
+				FontAttributes="Bold"
+				FontSize="20"				
+                BackgroundColor="#BF043055"
+                WidthRequest="130"
+                    Clicked="ResetPassword"/>
+            <Button
+                 Grid.Row="4"
+				x:Name="SignUpButton"
+				Text="تسجيل"
+				TextColor="White"
+				FontAttributes="Bold"
+				FontSize="20"
+				HorizontalOptions="Center"
+				BackgroundColor="#BF043055"
+                Clicked="SignUpButton_Clicked"
+                WidthRequest="130"/>
+        
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

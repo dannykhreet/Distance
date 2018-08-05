@@ -1,0 +1,4 @@
+CONFIG_KEY = "AIzaSyACcDHD9prx8OSOZODNKvUmU2c-Fhq4FsI";
+FirebaseClient("https://test-969b8.firebaseio.com/");
+
+https://github.com/brian593/Firebase.Xamarin

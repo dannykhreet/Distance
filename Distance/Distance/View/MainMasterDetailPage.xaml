@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Distance.View.MainMasterDetailPage"
+             xmlns:pages="clr-namespace:Distance.View">
+    <MasterDetailPage.ToolbarItems>
+        <ToolbarItem Name="signout" 
+                     Order="Primary" 
+                     Text="تسجيل خروج" 
+                     Priority="0" 
+                    Activated="signout_Activated" />
+    </MasterDetailPage.ToolbarItems>
+    <MasterDetailPage.Master>
+        <pages:MasterPage
+             x:Name="MasterPage" />
+  </MasterDetailPage.Master>
+  <MasterDetailPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                 <pages:DetailPage/>
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Distance.View.DetailPage"
+            BarBackgroundColor="Red"
+            xmlns:pages="clr-namespace:Distance.View"
+            >
+  <!--Pages can be added as references or inline-->
+  <ContentPage Title="من نحن" />
+  <ContentPage Title="المنح" />
+  <ContentPage Title="متاحة التسجيل حاليا" />
+    <pages:Universites/>
+</TabbedPage>

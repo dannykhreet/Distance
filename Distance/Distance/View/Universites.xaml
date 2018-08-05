@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Distance.View.Universites"
+		     xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+            Title="جامعات">
+    <ContentPage.Content>
+        <StackLayout>
+            <flv:FlowListView FlowColumnCount="2" 
+                              SeparatorVisibility="None" 
+                              HasUnevenRows="True"
+	                          FlowItemTappedCommand="{Binding LoadItemsCommand}"
+	                          FlowItemsSource="{Binding Items}" 
+                              RefreshCommand="{Binding LoadItemsCommand}"
+                              IsPullToRefreshEnabled="true"
+                              IsRefreshing="{Binding IsBusy, Mode=OneWay}" >
+
+                <flv:FlowListView.FlowColumnTemplate>
+                    <DataTemplate>
+                            <Frame 
+                                OutlineColor="BlueViolet"
+                                Padding="10"
+                                Margin="5">
+                        <StackLayout>
+                                
+                         <Image Source="{Binding Url}"
+                                           WidthRequest="60"
+                                           HeightRequest="80"
+                               HorizontalOptions="Center"/>
+                              <StackLayout Padding="10"
+                                             Orientation="Vertical">
+                                    <Label Text="{Binding Name}" 
+                                          LineBreakMode="NoWrap" 
+                                         Style="{DynamicResource ListItemTextStyle}" 
+                                         FontSize="16"
+                                           HorizontalOptions="Center"/>
+                                    <Label Text="{Binding Location}" 
+                                            LineBreakMode="NoWrap"
+                                            Style="{DynamicResource ListItemDetailTextStyle}"
+                                            FontSize="13"
+                                           HorizontalOptions="Center"/>
+                                </StackLayout>
+                        </StackLayout>
+                            </Frame>
+
+                    </DataTemplate>
+                </flv:FlowListView.FlowColumnTemplate>
+
+            </flv:FlowListView>
+            <!--<StackLayout>
+                <ListView x:Name="ItemsListView" 
+                           ItemsSource="{Binding Items}"
+                           VerticalOptions="FillAndExpand"
+                           HasUnevenRows="true"
+                           RefreshCommand="{Binding LoadItemsCommand}"
+                           IsPullToRefreshEnabled="true"
+                           IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                           CachingStrategy="RecycleElement">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10"
+                                             Orientation="Horizontal">
+                                    <Label Text="{Binding Name}" 
+                                          LineBreakMode="NoWrap" 
+                                         Style="{DynamicResource ListItemTextStyle}" 
+                                         FontSize="16" />
+                                    <Label Text="{Binding Location}" 
+                                            LineBreakMode="NoWrap"
+                                            Style="{DynamicResource ListItemDetailTextStyle}"
+                                            FontSize="13" />
+                                    <Image Source="{Binding Url}"
+                                           WidthRequest="30"
+                                           HeightRequest="40"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>-->
+
+            <Button Text="create"
+                    Clicked="Button_Clicked"/>
+            <Button Text="delete"
+                    Clicked="deleted"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

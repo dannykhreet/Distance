@@ -16,7 +16,6 @@ namespace Distance.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainMasterDetailPage : MasterDetailPage
     {
-        LoginViewModel viewModel;
         FirebaseAuthService firebaseAuthService;
 
         // custom width master page 

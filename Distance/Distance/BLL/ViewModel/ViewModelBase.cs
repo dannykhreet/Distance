@@ -7,18 +7,7 @@ namespace Distance.BLL.ViewModel
 {
     public class ViewModelBase : BindableBase
     {
-        public ObservableCollection<ViewModelBase> items;
-
-        public EventHandler DataRetrievalFailed;
-
-        public ObservableCollection<ViewModelBase> Items
-        {
-            get
-            {
-                return items;
-            }
-
-        }
+      
 
         bool isBusy = false;
         public bool IsBusy

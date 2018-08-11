@@ -19,14 +19,8 @@ namespace Distance.View.LoginPages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SignInPage : ContentPage
     {
-        LoginViewModel loginViewModel;
-
         public SignInPage ()
         {
-            loginViewModel = new LoginViewModel();
-            this.BindingContext = loginViewModel;
-            
-
             InitializeComponent();
             // Lock all the pages on android and ios
             CrossDeviceOrientation.Current.LockOrientation(Plugin.DeviceOrientation.Abstractions.DeviceOrientations.Portrait);
@@ -98,6 +92,10 @@ namespace Distance.View.LoginPages
         private void rememberMe_CheckedChanged(object sender, XLabs.EventArgs<bool> e)
         {
             Settings.RememberMe = e.Value;
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
         }
     }
     

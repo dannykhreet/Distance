@@ -7,83 +7,71 @@
             Title="جامعات">
     <ContentPage.Content>
         <StackLayout>
-            <flv:FlowListView FlowColumnCount="2" 
-                              SeparatorVisibility="None" 
-                              HasUnevenRows="True"
-	                          FlowItemTappedCommand="{Binding LoadItemsCommand}"
-	                          FlowItemsSource="{Binding Items}" 
-                              RefreshCommand="{Binding LoadItemsCommand}"
-                              IsPullToRefreshEnabled="true"
-                              IsRefreshing="{Binding IsBusy, Mode=OneWay}" >
+            <Frame   HasShadow="false"
+                     CornerRadius="1">
+                <SearchBar     x:Name="SearchBar" 
+                               Text="{Binding Keyword}"
+                               SearchCommand="{Binding SearchCommand}" 
+                               TextChanged="SearchBar_TextChanged">
 
-                <flv:FlowListView.FlowColumnTemplate>
-                    <DataTemplate>
-                            <Frame 
-                                OutlineColor="BlueViolet"
-                                Padding="10"
-                                Margin="5">
+                <SearchBar.HeightRequest>
+
+                    <OnPlatform x:TypeArguments="x:Double"
+                                    iOS="20"
+                                    Android="40" />
+                </SearchBar.HeightRequest>
+
+            </SearchBar>
+
+        </Frame>
+
+        <flv:FlowListView  FlowColumnCount="2" 
+                            SeparatorVisibility="None" 
+                            HasUnevenRows="True"
+	                        FlowItemTappedCommand="{Binding LoadItemsCommand}"
+	                        FlowItemsSource="{Binding Items}" 
+                            RefreshCommand="{Binding LoadItemsCommand}"
+                            IsPullToRefreshEnabled="{Binding IsSearch}"
+                            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                           x:Name="flowlist">
+
+            <flv:FlowListView.FlowColumnTemplate>
+                <DataTemplate>
+                    <Frame 
+                            OutlineColor="BlueViolet"
+                            Padding="10"
+                            Margin="5">
                         <StackLayout>
-                                
-                         <Image Source="{Binding Url}"
-                                           WidthRequest="60"
-                                           HeightRequest="80"
-                               HorizontalOptions="Center"/>
-                              <StackLayout Padding="10"
-                                             Orientation="Vertical">
-                                    <Label Text="{Binding Name}" 
-                                          LineBreakMode="NoWrap" 
-                                         Style="{DynamicResource ListItemTextStyle}" 
-                                         FontSize="16"
-                                           HorizontalOptions="Center"/>
-                                    <Label Text="{Binding Location}" 
-                                            LineBreakMode="NoWrap"
-                                            Style="{DynamicResource ListItemDetailTextStyle}"
-                                            FontSize="13"
-                                           HorizontalOptions="Center"/>
-                                </StackLayout>
+
+                            <Image Source="{Binding Url}"
+                                        WidthRequest="140"
+                                        HeightRequest="120"
+                            HorizontalOptions="Center"/>
+                            <StackLayout Padding="10"
+                                            Orientation="Vertical">
+                                <Label Text="{Binding Name}" 
+                                        LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16"
+                                        HorizontalOptions="Center"/>
+                                <Label Text="{Binding Location}" 
+                                        LineBreakMode="NoWrap"
+                                        Style="{DynamicResource ListItemDetailTextStyle}"
+                                        FontSize="13"
+                                        HorizontalOptions="Center"/>
+                            </StackLayout>
                         </StackLayout>
-                            </Frame>
+                    </Frame>
 
-                    </DataTemplate>
-                </flv:FlowListView.FlowColumnTemplate>
+                </DataTemplate>
+            </flv:FlowListView.FlowColumnTemplate>
 
-            </flv:FlowListView>
-            <!--<StackLayout>
-                <ListView x:Name="ItemsListView" 
-                           ItemsSource="{Binding Items}"
-                           VerticalOptions="FillAndExpand"
-                           HasUnevenRows="true"
-                           RefreshCommand="{Binding LoadItemsCommand}"
-                           IsPullToRefreshEnabled="true"
-                           IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                           CachingStrategy="RecycleElement">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Padding="10"
-                                             Orientation="Horizontal">
-                                    <Label Text="{Binding Name}" 
-                                          LineBreakMode="NoWrap" 
-                                         Style="{DynamicResource ListItemTextStyle}" 
-                                         FontSize="16" />
-                                    <Label Text="{Binding Location}" 
-                                            LineBreakMode="NoWrap"
-                                            Style="{DynamicResource ListItemDetailTextStyle}"
-                                            FontSize="13" />
-                                    <Image Source="{Binding Url}"
-                                           WidthRequest="30"
-                                           HeightRequest="40"/>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackLayout>-->
+        </flv:FlowListView>
 
-            <Button Text="create"
-                    Clicked="Button_Clicked"/>
+        <Button Text="create"
+                Clicked="Button_Clicked"/>
             <Button Text="delete"
-                    Clicked="deleted"/>
+                Clicked="deleted"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

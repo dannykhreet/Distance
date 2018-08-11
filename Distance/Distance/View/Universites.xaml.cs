@@ -14,13 +14,14 @@ namespace Distance.View
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Universites : ContentPage
     {
-        LoginViewModel viewModel;
+        UniversityViewModel viewModel;
         FirebaseViewModel firebaseViewModel;
         public Universites ()
 		{
-			InitializeComponent ();
+
+            InitializeComponent ();
             firebaseViewModel = new FirebaseViewModel();
-            BindingContext = viewModel = new LoginViewModel();
+            BindingContext = viewModel = new UniversityViewModel();
 
         }
 
@@ -36,12 +37,17 @@ namespace Distance.View
             if (viewModel.Items.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
         }
-
+       
         private async void deleted(object sender, ItemTappedEventArgs e)
         {            
         
 
 
+        }
+
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            viewModel.Search(SearchBar.Text);
         }
     }
 }

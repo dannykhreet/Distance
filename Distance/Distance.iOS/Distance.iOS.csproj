@@ -91,6 +91,7 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CustomRender\ExitAppIOS.cs" />
     <Compile Include="CustomRender\MyMasterDetailPageRenderer.cs" />
     <Compile Include="CustomRender\MyPhoneMasterDetailRenderer.cs" />
     <Compile Include="Main.cs" />

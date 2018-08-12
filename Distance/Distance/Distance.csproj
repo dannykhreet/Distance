@@ -22,7 +22,6 @@
 
   <ItemGroup>
     <Folder Include="Effects\" />
-    <Folder Include="Interface\" />
     <Folder Include="Provider\" />
   </ItemGroup>
 
@@ -33,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="View\DetailPage.xaml">
+    <EmbeddedResource Update="View\AboutUs.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\LoginPages\SignInPage.xaml">
@@ -43,9 +42,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\MainMasterDetailPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="View\MasterPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\PopUp.xaml">

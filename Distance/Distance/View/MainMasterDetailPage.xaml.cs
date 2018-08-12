@@ -1,5 +1,6 @@
 ﻿using Distance.BLL.ViewModel;
 using Distance.DAL.Service.FireBase;
+using Distance.Interface;
 using Distance.Model;
 using Distance.View.LoginPages;
 using System;
@@ -17,6 +18,7 @@ namespace Distance.View
     public partial class MainMasterDetailPage : MasterDetailPage
     {
         FirebaseAuthService firebaseAuthService;
+        MainMasterDetailViewModel mainMasterDetailViewModel;
 
         // custom width master page 
         public readonly static BindableProperty WidthRatioProperty =
@@ -43,12 +45,13 @@ namespace Distance.View
             InitializeComponent();
             WidthRatio = (float)0.3;
 
+
+            Detail = new NavigationPage(new Universites());
+            IsPresented = false;
+            mainMasterDetailViewModel = new MainMasterDetailViewModel();
+            BindingContext = mainMasterDetailViewModel;
         }
 
-        protected override bool OnBackButtonPressed()
-        {
-            return true;
-        }
 
         private void signout_Activated(object sender, EventArgs e)
         {
@@ -56,5 +59,27 @@ namespace Distance.View
             firebaseAuthService.DeleteFirebaseAuth();
             Navigation.PushAsync(new SignInPage());
         }
+
+
+        private void Univsersity_Clicked(object sender, EventArgs e)
+        {
+            Detail = new NavigationPage(new Universites());
+            IsPresented = false;
+        }
+        private void AboutUs_Clicked(object sender, EventArgs e)
+        {
+            Detail = new NavigationPage(new AboutUs());
+            IsPresented = false;
+        }
+        protected  override bool OnBackButtonPressed()
+        {
+            if (mainMasterDetailViewModel._canClose)
+            {
+                mainMasterDetailViewModel.ShowExitDialog();
+            }
+            return mainMasterDetailViewModel._canClose;
+        }
+
+        
     }
 }

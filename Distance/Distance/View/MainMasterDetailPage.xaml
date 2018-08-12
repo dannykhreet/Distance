@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Distance.View.MainMasterDetailPage"
-             xmlns:pages="clr-namespace:Distance.View">
+             x:Class="Distance.View.MainMasterDetailPage">
     <MasterDetailPage.ToolbarItems>
         <ToolbarItem Name="signout" 
                      Order="Primary" 
@@ -11,14 +10,45 @@
                     Activated="signout_Activated" />
     </MasterDetailPage.ToolbarItems>
     <MasterDetailPage.Master>
-        <pages:MasterPage
-             x:Name="MasterPage" />
-  </MasterDetailPage.Master>
-  <MasterDetailPage.Detail>
-        <NavigationPage>
-            <x:Arguments>
-                 <pages:DetailPage/>
-            </x:Arguments>
-        </NavigationPage>
-    </MasterDetailPage.Detail>
+        <ContentPage
+                     Title="Master"
+            BackgroundColor="White">
+            <ContentPage.Content>
+                <StackLayout >
+                    <Label Text="القائمة الرئيسية"
+                           Margin="15,20,5,50"
+                           HorizontalOptions="Center"/>
+                   
+                    <Label Text="الجامعات"
+                           TextColor="Black"
+                           Margin="5,10,5,15"
+                           HorizontalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Univsersity_Clicked"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    
+                    <Label Text="من نحن"
+                           TextColor="Black"
+                           Margin="5,10,5,15"
+                           HorizontalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AboutUs_Clicked"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="خروج"
+                           TextColor="Black"
+                           Margin="5,10,5,15"
+                           HorizontalOptions="Center"
+                           VerticalOptions="End">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding ExitCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    
 </MasterDetailPage>

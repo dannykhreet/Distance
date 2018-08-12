@@ -18,7 +18,7 @@
 
                     <OnPlatform x:TypeArguments="x:Double"
                                     iOS="20"
-                                    Android="40" />
+                                    Android="30" />
                 </SearchBar.HeightRequest>
 
             </SearchBar>

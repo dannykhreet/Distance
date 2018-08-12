@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace Distance.View
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class MasterPage : ContentPage
+	public partial class AboutUs : ContentPage
 	{
-		public MasterPage ()
+		public AboutUs ()
 		{
 			InitializeComponent ();
 		}

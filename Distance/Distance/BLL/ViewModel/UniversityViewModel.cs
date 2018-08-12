@@ -51,9 +51,10 @@ namespace Distance.BLL.ViewModel
         private bool isSearch;
         public bool IsSearch
         {
-            get {
-                    return isSearch;
-                }
+            get
+            {
+                return isSearch;
+            }
             set
             {
                 isSearch = value;
@@ -71,7 +72,6 @@ namespace Distance.BLL.ViewModel
             }
             else if (key.Length >=1)
             {
-                IsSearch = false;
                 await ExecuteLoadItemsCommand();
                 Universities = Items.Where(c => c.Name.ToLowerInvariant().Contains(key.ToLowerInvariant())).ToList();
                 Suggestions = new ObservableCollection<University>(universities);
@@ -80,12 +80,14 @@ namespace Distance.BLL.ViewModel
                 {
                     Items.Add(Suggestions[i]);
                 }
+                IsSearch = false;
             }
         }
 
       
         public UniversityViewModel()
         {
+            IsSearch = true;
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
             Items = new ObservableCollection<University>();
         }

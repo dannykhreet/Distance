@@ -9,6 +9,9 @@ using Android.OS;
 using Plugin.CurrentActivity;
 using Plugin.DeviceOrientation;
 using Android.Content.Res;
+using Android.Gms.Common;
+using Plugin.FirebasePushNotification;
+using Android.Content;
 
 namespace Distance.Droid
 {
@@ -33,7 +36,38 @@ namespace Distance.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
+
+            CheckForGoogleServices();
+
+            FirebasePushNotificationManager.ProcessIntent(this, Intent);
         }
+
+        protected override void OnNewIntent(Intent intent)
+        {
+            base.OnNewIntent(intent);
+            FirebasePushNotificationManager.ProcessIntent(this, intent);
+        }
+
+        // Check if the Google Play Services is available to recieve Push Notification from Firebase
+        public bool CheckForGoogleServices()
+        {
+            int resultCode = GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(this);
+            if (resultCode != ConnectionResult.Success)
+            {
+                if (GoogleApiAvailability.Instance.IsUserResolvableError(resultCode))
+                {
+                    Toast.MakeText(this, GoogleApiAvailability.Instance.GetErrorString(resultCode), ToastLength.Long);
+                }
+                else
+                {
+                    Toast.MakeText(this, "This device does not support Google Play Services", ToastLength.Long);
+                }
+                return false;
+            }
+            return true;
+        }
+
+
         // Step 2:
         public override void OnConfigurationChanged(Configuration newConfig)
         {

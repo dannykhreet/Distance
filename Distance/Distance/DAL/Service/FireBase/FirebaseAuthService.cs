@@ -1,4 +1,4 @@
-﻿using Distance.DAL.Service.FireBase.Config;
+﻿using Distance.DAL.Config;
 using Distance.Model;
 using Firebase.Auth;
 using Newtonsoft.Json;

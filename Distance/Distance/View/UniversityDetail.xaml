@@ -7,6 +7,8 @@
             <Image x:Name="universityImage"/>
             <Label x:Name="t" />
             <Label x:Name="descrption" />
+            <Button Text="يوتيوب"
+                    Clicked="Button_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

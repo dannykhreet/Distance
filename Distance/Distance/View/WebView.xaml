@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Distance.View.WebView">
+    <ContentPage.Content>
+        <Grid>
+            <Label Text="لا يمكن عرض هذه الصفحة الرجاء التحقق من اتصال الانترنت" 
+                     x:Name="internetMassage" 
+                     Grid.Row="0"
+                   IsVisible="False"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"/>
+            <WebView Source="http://www.google.com/" 
+                     x:Name="WebPageUrl" 
+                     Grid.Row="0" 
+                     IsVisible="True"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

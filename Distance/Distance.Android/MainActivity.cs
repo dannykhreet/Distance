@@ -12,6 +12,7 @@ using Android.Content.Res;
 using Android.Gms.Common;
 using Plugin.FirebasePushNotification;
 using Android.Content;
+using Android.Gms.Ads;
 
 namespace Distance.Droid
 {
@@ -34,8 +35,19 @@ namespace Distance.Droid
             CrossCurrentActivity.Current.Activity = this;
             // 
 
+            // for admob "YOUR ANDROID APP ID HERE"
+            MobileAds.Initialize(ApplicationContext, "ca-app-pub-5963831393043908~7484791244");
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            try
+            {
             LoadApplication(new App());
+
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
 
             CheckForGoogleServices();
 

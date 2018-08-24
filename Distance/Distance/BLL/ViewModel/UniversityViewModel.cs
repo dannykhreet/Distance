@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Distance.DAL.Service.FireBase;
 using System.Linq;
 using System.Windows.Input;
+using Distance.DAL.Config;
 
 namespace Distance.BLL.ViewModel
 {
@@ -26,9 +27,11 @@ namespace Distance.BLL.ViewModel
                 OnPropertyChanged();
             }
         }
-
         public Command LoadItemsCommand { get; set; }
-      
+
+        public string AdUnitId { get; set; } = "ca-app-pub-3940256099942544/6300978111";
+
+
         private ObservableCollection<University> suggestions;
         public ObservableCollection<University> Suggestions
         {
@@ -102,11 +105,13 @@ namespace Distance.BLL.ViewModel
         public UniversityViewModel()
         {
             IsSearch = true;
+            if (Device.RuntimePlatform == Device.iOS)
+                AdUnitId = "iOS Key";
+            else if (Device.RuntimePlatform == Device.Android)
+                AdUnitId = "ca-app-pub-3940256099942544/6300978111";
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
             Items = new ObservableCollection<University>();
         }
-
-      
 
         async Task ExecuteLoadItemsCommand()
         {

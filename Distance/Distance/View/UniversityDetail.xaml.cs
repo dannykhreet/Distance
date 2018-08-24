@@ -27,5 +27,10 @@ namespace Distance.View
             universityImage.Source = selectedUniversity.url;
             descrption.Text = selectedUniversity.discription;
         }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new WebView(selectedUniversity.youToubChannel));
+        }
     }
 }

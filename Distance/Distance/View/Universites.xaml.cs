@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Distance.DAL.Config;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,6 +17,7 @@ namespace Distance.View
     {
         UniversityViewModel viewModel;
         FirebaseViewModel firebaseViewModel;
+
         public Universites ()
 		{
 

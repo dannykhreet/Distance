@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Distance.DAL.Service.FireBase;
 using System.Linq;
+using System.Windows.Input;
 
 namespace Distance.BLL.ViewModel
 {
@@ -48,6 +49,19 @@ namespace Distance.BLL.ViewModel
             }
         }
 
+        private University selectedUniversity;
+        public University SelectedUniversity
+        {
+            get
+            {
+                return selectedUniversity;
+            }
+            set
+            {
+                selectedUniversity = value;
+                OnPropertyChanged();
+            }
+        }
         private bool isSearch;
         public bool IsSearch
         {
@@ -73,7 +87,7 @@ namespace Distance.BLL.ViewModel
             else if (key.Length >=1)
             {
                 await ExecuteLoadItemsCommand();
-                Universities = Items.Where(c => c.Name.ToLowerInvariant().Contains(key.ToLowerInvariant())).ToList();
+                Universities = Items.Where(c => c.arabicName.ToLowerInvariant().Contains(key.ToLowerInvariant())).ToList();
                 Suggestions = new ObservableCollection<University>(universities);
                 Items.Clear();
                 for (int i = 0; i < Suggestions.Count(); i++)
@@ -91,6 +105,8 @@ namespace Distance.BLL.ViewModel
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
             Items = new ObservableCollection<University>();
         }
+
+      
 
         async Task ExecuteLoadItemsCommand()
         {
@@ -119,5 +135,8 @@ namespace Distance.BLL.ViewModel
                 IsBusy = false;
             }
         }
+
+
+
     }
 }

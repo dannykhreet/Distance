@@ -28,7 +28,8 @@
         <flv:FlowListView  FlowColumnCount="2" 
                             SeparatorVisibility="None" 
                             HasUnevenRows="True"
-	                        FlowItemTappedCommand="{Binding LoadItemsCommand}"
+                            FlowLastTappedItem = "{Binding SelectedUniversity}"
+                            FlowItemTapped="flowlist_FlowItemTapped"
 	                        FlowItemsSource="{Binding Items}" 
                             RefreshCommand="{Binding LoadItemsCommand}"
                             IsPullToRefreshEnabled="{Binding IsSearch}"
@@ -43,18 +44,18 @@
                             Margin="5">
                         <StackLayout>
 
-                            <Image Source="{Binding Url}"
+                            <Image Source="{Binding url}"
                                         WidthRequest="140"
                                         HeightRequest="120"
                             HorizontalOptions="Center"/>
                             <StackLayout Padding="10"
                                             Orientation="Vertical">
-                                <Label Text="{Binding Name}" 
+                                <Label Text="{Binding arabicName}" 
                                         LineBreakMode="NoWrap" 
                                         Style="{DynamicResource ListItemTextStyle}" 
                                         FontSize="16"
                                         HorizontalOptions="Center"/>
-                                <Label Text="{Binding Location}" 
+                                <Label Text="{Binding location}" 
                                         LineBreakMode="NoWrap"
                                         Style="{DynamicResource ListItemDetailTextStyle}"
                                         FontSize="13"
@@ -68,10 +69,8 @@
 
         </flv:FlowListView>
 
-        <Button Text="create"
+            <Button Text="create test"
                 Clicked="Button_Clicked"/>
-            <Button Text="delete"
-                Clicked="deleted"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,4 +1,5 @@
-﻿using Distance.BLL.ViewModel;
+﻿using Distance.BLL.Model;
+using Distance.BLL.ViewModel;
 using Distance.DAL;
 using System;
 using System.Collections.Generic;
@@ -38,16 +39,16 @@ namespace Distance.View
                 viewModel.LoadItemsCommand.Execute(null);
         }
        
-        private async void deleted(object sender, ItemTappedEventArgs e)
-        {            
-        
-
-
-        }
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
             viewModel.Search(SearchBar.Text);
+        }
+
+        private void flowlist_FlowItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var selectedUniversity = viewModel.SelectedUniversity;
+            Navigation.PushAsync(new UniversityDetail(selectedUniversity));
         }
     }
 }

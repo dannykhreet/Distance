@@ -20,9 +20,10 @@ namespace Distance.BLL.ViewModel
                 University university = new University
                 {
                     Id = "11",
-                    Location = "locat te",
-                    Name = "name test",
-                    Url = "https://firebasestorage.googleapis.com/v0/b/test-969b8.appspot.com/o/download%20(1).jpeg?alt=media&token=7c0948e8-38b5-433c-bf72-0e525748f26f"
+                    location = "test",
+                    turkeyName = "name test",
+                    arabicName = " Mobile test",
+                    url = "https://firebasestorage.googleapis.com/v0/b/test-969b8.appspot.com/o/university%2F-LKLvtPGtbbrvpyDTvK_..png?alt=media&token=71892fc2-8e9b-4d68-9e6e-8f52c44ec2f4"
 
                 };
                 var _item = university as University;

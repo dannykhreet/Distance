@@ -25,7 +25,7 @@ namespace Distance.DAL.Service.FireBase
             {
                 if (_universityStore == null)
                 {
-                    _universityStore = new FirebaseOfflineDataStore<University>(_firebaseAuthService, "university");
+                    _universityStore = new FirebaseOfflineDataStore<University>(_firebaseAuthService, "universitys");
                    // _universityStore = new FirebaseDataStore<University>(_firebaseAuthService, "university");
                 }
 

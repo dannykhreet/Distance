@@ -125,6 +125,11 @@ namespace Distance.BLL.ViewModel
 
                 Items.Clear();
                 var items = await App.DataStoreContainer.UniversityStore.GetItemsAsync(true);
+                if (items == null)
+                {
+                    return;
+                }
+                else
                 foreach (var item in items)
                 {
                     Items.Add(item);
